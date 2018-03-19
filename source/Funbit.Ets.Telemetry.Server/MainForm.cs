@@ -18,6 +18,7 @@ namespace Funbit.Ets.Telemetry.Server
     public partial class MainForm : Form
     {
         IDisposable _server;
+        System.IO.Ports.SerialPort currentPort;
         static readonly log4net.ILog Log = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         readonly HttpClient _broadcastHttpClient = new HttpClient();
@@ -88,6 +89,14 @@ namespace Funbit.Ets.Telemetry.Server
                 else
                     interfacesDropDown.SelectedIndex = 0; // select default interface
 
+                // load list of available COMM port - by Priyank Patel
+                var commPorts = System.IO.Ports.SerialPort.GetPortNames();
+                commDropdown.Items.Clear();
+                foreach (var commIntf in commPorts)
+                    commDropdown.Items.Add(commIntf);
+                if (commDropdown.Items.Count != 0)
+                    commDropdown.SelectedIndex = 0; // select default comm port
+
                 // bind to all available interfaces
                 _server = WebApp.Start<Startup>(IpToEndpointUrl("+"));
 
@@ -101,6 +110,25 @@ namespace Funbit.Ets.Telemetry.Server
                     _broadcastHttpClient.DefaultRequestHeaders.Add("X-UserPassword", BroadcastUserPassword);
                     broadcastTimer.Interval = BroadcastRateInSeconds * 1000;
                     broadcastTimer.Enabled = true;
+                }
+
+                // Open the port
+                try
+                {
+                    string[] ports = System.IO.Ports.SerialPort.GetPortNames();
+                    currentPort = new System.IO.Ports.SerialPort(ports[commDropdown.SelectedIndex], 115200);
+                    currentPort.Open();
+                    /*
+                    if (currentPort.IsOpen)
+                    {
+                        System.Threading.Thread.Sleep(1000);
+                        currentPort.Write("START");
+                    }
+                    */
+                }
+                catch(Exception ex)
+                {
+                    Log.Error(ex);
                 }
 
                 // show tray icon
@@ -215,7 +243,10 @@ namespace Funbit.Ets.Telemetry.Server
             try
             {
                 broadcastTimer.Enabled = false;
-                await _broadcastHttpClient.PostAsJsonAsync(BroadcastUrl, Ets2TelemetryDataReader.Instance.Read());
+                IEts2TelemetryData data = Ets2TelemetryDataReader.Instance.Read();
+                float speed = data.Truck.Speed; // km/h
+                if (currentPort.IsOpen) currentPort.Write(speed.ToString());
+                await _broadcastHttpClient.PostAsJsonAsync(BroadcastUrl, data);
             }
             catch (Exception ex)
             {
@@ -251,6 +282,44 @@ namespace Funbit.Ets.Telemetry.Server
         void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // TODO: implement later
+        }
+
+        private void commTimer_Tick(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                if (currentPort.IsOpen && (Ets2ProcessHelper.IsEts2Running && Ets2TelemetryDataReader.Instance.IsConnected))
+                {
+                    IEts2TelemetryData data = Ets2TelemetryDataReader.Instance.Read();
+                    float speed = data.Truck.Speed; // km/h
+                    float angle = data.Truck.GameSteer;
+                    // string dataToSend = "S:" + speed + "&" + "A:" + angle + "|"; // Format: S:{Speed}&A:{Angle}|
+                    // string dataToSend = "{\"inParkMode\":\"" + data.Truck.ParkBrakeOn + "\",\"speed\":\"" + speed + "\",\"angle\":\"" + angle + "\"}"; // Format: S:{Speed}&A:{Angle}|
+                    string dataToSend = "{\"inParkMode\":\"" + data.Truck.ParkBrakeOn + "\",\"speed\":" + speed + ",\"angle\":" + angle + "}"; // Format: S:{Speed}&A:{Angle}|
+                    // Console.Write(dataToSend);
+                    currentPort.Write(dataToSend);
+                }
+
+                int intReturnASCII = 0;
+                int count = currentPort.BytesToRead;
+                string returnMessage = "";
+                while (count > 0)
+                {
+                    intReturnASCII = currentPort.ReadByte();
+                    returnMessage = returnMessage + Convert.ToChar(intReturnASCII);
+                    count--;
+                }
+                if (returnMessage != "")
+                {
+                    
+                }
+                Console.WriteLine("Message: " + returnMessage);
+            } catch(Exception ex)
+            {
+                Log.Error(ex);
+            }
+            
         }
     }
 }
