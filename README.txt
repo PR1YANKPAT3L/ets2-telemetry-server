@@ -1,5 +1,7 @@
 Welcome to the ETS2 Telemetry Web Server and Mobile Dashboard!
 
+[EDIT]: Modified by Priyank Patel for Serial Communication Support with Arduino.
+
 ================
 Folder structure
 ================
