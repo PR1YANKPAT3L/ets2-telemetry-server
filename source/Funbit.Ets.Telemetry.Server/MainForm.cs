@@ -116,7 +116,8 @@ namespace Funbit.Ets.Telemetry.Server
                 try
                 {
                     string[] ports = System.IO.Ports.SerialPort.GetPortNames();
-                    currentPort = new System.IO.Ports.SerialPort(ports[commDropdown.SelectedIndex], 115200);
+                    currentPort = new System.IO.Ports.SerialPort("COM6", 250000); // Default 115200
+                    // currentPort = new System.IO.Ports.SerialPort(ports[commDropdown.SelectedIndex], 115200);
                     currentPort.Open();
                     /*
                     if (currentPort.IsOpen)
@@ -297,11 +298,11 @@ namespace Funbit.Ets.Telemetry.Server
                     // string dataToSend = "S:" + speed + "&" + "A:" + angle + "|"; // Format: S:{Speed}&A:{Angle}|
                     // string dataToSend = "{\"inParkMode\":\"" + data.Truck.ParkBrakeOn + "\",\"speed\":\"" + speed + "\",\"angle\":\"" + angle + "\"}"; // Format: S:{Speed}&A:{Angle}|
                     string dataToSend = "{\"inParkMode\":\"" + data.Truck.ParkBrakeOn + "\",\"speed\":" + speed + ",\"angle\":" + angle + "}"; // Format: S:{Speed}&A:{Angle}|
-                    // Console.Write(dataToSend);
+                    Console.Write(dataToSend);
                     currentPort.Write(dataToSend);
                 }
 
-                int intReturnASCII = 0;
+                /*int intReturnASCII = 0;
                 int count = currentPort.BytesToRead;
                 string returnMessage = "";
                 while (count > 0)
@@ -313,8 +314,8 @@ namespace Funbit.Ets.Telemetry.Server
                 if (returnMessage != "")
                 {
                     
-                }
-                Console.WriteLine("Message: " + returnMessage);
+                }*/
+                // Console.WriteLine("Message: " + returnMessage);
             } catch(Exception ex)
             {
                 Log.Error(ex);

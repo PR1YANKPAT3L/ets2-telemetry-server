@@ -35,6 +35,8 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.commDropdown = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.ipAddressLabel = new System.Windows.Forms.Label();
             this.interfacesDropDown = new System.Windows.Forms.ComboBox();
             this.networkInterfaceTitleLabel = new System.Windows.Forms.Label();
@@ -54,8 +56,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.commDropdown = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.commTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -72,16 +72,17 @@
             // 
             // contextMenuStrip
             // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.closeToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(104, 26);
+            this.contextMenuStrip.Size = new System.Drawing.Size(119, 30);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Image = global::Funbit.Ets.Telemetry.Server.Properties.Resources.CloseIcon;
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(118, 26);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -105,21 +106,47 @@
             this.groupBox1.Controls.Add(this.apiEndpointUrlTitleLabel);
             this.groupBox1.Controls.Add(this.statusTitleLabel);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 33);
+            this.groupBox1.Location = new System.Drawing.Point(16, 41);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(527, 277);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(703, 341);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Server status";
+            // 
+            // commDropdown
+            // 
+            this.commDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.commDropdown.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.commDropdown.FormattingEnabled = true;
+            this.commDropdown.Location = new System.Drawing.Point(189, 155);
+            this.commDropdown.Margin = new System.Windows.Forms.Padding(4);
+            this.commDropdown.Name = "commDropdown";
+            this.commDropdown.Size = new System.Drawing.Size(491, 29);
+            this.commDropdown.TabIndex = 23;
+            this.commDropdown.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(73, 159);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 23);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "COMM Port:";
             // 
             // ipAddressLabel
             // 
             this.ipAddressLabel.AutoSize = true;
             this.ipAddressLabel.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ipAddressLabel.ForeColor = System.Drawing.Color.Purple;
-            this.ipAddressLabel.Location = new System.Drawing.Point(139, 179);
+            this.ipAddressLabel.Location = new System.Drawing.Point(185, 220);
+            this.ipAddressLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ipAddressLabel.Name = "ipAddressLabel";
-            this.ipAddressLabel.Size = new System.Drawing.Size(95, 17);
+            this.ipAddressLabel.Size = new System.Drawing.Size(121, 23);
             this.ipAddressLabel.TabIndex = 21;
             this.ipAddressLabel.Text = "111.222.333.444";
             this.toolTip.SetToolTip(this.ipAddressLabel, "Use this IP address for mobile application (Android)");
@@ -129,9 +156,10 @@
             this.interfacesDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.interfacesDropDown.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.interfacesDropDown.FormattingEnabled = true;
-            this.interfacesDropDown.Location = new System.Drawing.Point(144, 91);
+            this.interfacesDropDown.Location = new System.Drawing.Point(192, 112);
+            this.interfacesDropDown.Margin = new System.Windows.Forms.Padding(4);
             this.interfacesDropDown.Name = "interfacesDropDown";
-            this.interfacesDropDown.Size = new System.Drawing.Size(369, 25);
+            this.interfacesDropDown.Size = new System.Drawing.Size(491, 29);
             this.interfacesDropDown.TabIndex = 20;
             this.interfacesDropDown.TabStop = false;
             this.interfacesDropDown.SelectedIndexChanged += new System.EventHandler(this.interfaceDropDown_SelectedIndexChanged);
@@ -140,9 +168,10 @@
             // 
             this.networkInterfaceTitleLabel.AutoSize = true;
             this.networkInterfaceTitleLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.networkInterfaceTitleLabel.Location = new System.Drawing.Point(18, 94);
+            this.networkInterfaceTitleLabel.Location = new System.Drawing.Point(24, 116);
+            this.networkInterfaceTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.networkInterfaceTitleLabel.Name = "networkInterfaceTitleLabel";
-            this.networkInterfaceTitleLabel.Size = new System.Drawing.Size(120, 17);
+            this.networkInterfaceTitleLabel.Size = new System.Drawing.Size(157, 23);
             this.networkInterfaceTitleLabel.TabIndex = 19;
             this.networkInterfaceTitleLabel.Text = "Network Interfaces:";
             // 
@@ -150,9 +179,10 @@
             // 
             this.serverIpTitleLabel.AutoSize = true;
             this.serverIpTitleLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serverIpTitleLabel.Location = new System.Drawing.Point(76, 179);
+            this.serverIpTitleLabel.Location = new System.Drawing.Point(101, 220);
+            this.serverIpTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.serverIpTitleLabel.Name = "serverIpTitleLabel";
-            this.serverIpTitleLabel.Size = new System.Drawing.Size(62, 17);
+            this.serverIpTitleLabel.Size = new System.Drawing.Size(81, 23);
             this.serverIpTitleLabel.TabIndex = 17;
             this.serverIpTitleLabel.Text = "Server IP:";
             // 
@@ -160,9 +190,10 @@
             // 
             this.appUrlLabel.AutoSize = true;
             this.appUrlLabel.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appUrlLabel.Location = new System.Drawing.Point(140, 211);
+            this.appUrlLabel.Location = new System.Drawing.Point(187, 260);
+            this.appUrlLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.appUrlLabel.Name = "appUrlLabel";
-            this.appUrlLabel.Size = new System.Drawing.Size(72, 17);
+            this.appUrlLabel.Size = new System.Drawing.Size(96, 23);
             this.appUrlLabel.TabIndex = 16;
             this.appUrlLabel.TabStop = true;
             this.appUrlLabel.Text = "appUrlLabel";
@@ -174,9 +205,10 @@
             // 
             this.appUrlTitleLabel.AutoSize = true;
             this.appUrlTitleLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appUrlTitleLabel.Location = new System.Drawing.Point(31, 211);
+            this.appUrlTitleLabel.Location = new System.Drawing.Point(41, 260);
+            this.appUrlTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.appUrlTitleLabel.Name = "appUrlTitleLabel";
-            this.appUrlTitleLabel.Size = new System.Drawing.Size(107, 17);
+            this.appUrlTitleLabel.Size = new System.Drawing.Size(138, 23);
             this.appUrlTitleLabel.TabIndex = 15;
             this.appUrlTitleLabel.Text = "HTML5 App URL:";
             // 
@@ -184,9 +216,10 @@
             // 
             this.apiUrlLabel.AutoSize = true;
             this.apiUrlLabel.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apiUrlLabel.Location = new System.Drawing.Point(139, 242);
+            this.apiUrlLabel.Location = new System.Drawing.Point(185, 298);
+            this.apiUrlLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.apiUrlLabel.Name = "apiUrlLabel";
-            this.apiUrlLabel.Size = new System.Drawing.Size(68, 17);
+            this.apiUrlLabel.Size = new System.Drawing.Size(89, 23);
             this.apiUrlLabel.TabIndex = 14;
             this.apiUrlLabel.TabStop = true;
             this.apiUrlLabel.Text = "apiUrlLabel";
@@ -199,9 +232,10 @@
             this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.statusLabel.Location = new System.Drawing.Point(141, 41);
+            this.statusLabel.Location = new System.Drawing.Point(188, 50);
+            this.statusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(69, 17);
+            this.statusLabel.Size = new System.Drawing.Size(92, 23);
             this.statusLabel.TabIndex = 13;
             this.statusLabel.Text = "Checking...";
             // 
@@ -209,9 +243,10 @@
             // 
             this.apiEndpointUrlTitleLabel.AutoSize = true;
             this.apiEndpointUrlTitleLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apiEndpointUrlTitleLabel.Location = new System.Drawing.Point(21, 242);
+            this.apiEndpointUrlTitleLabel.Location = new System.Drawing.Point(28, 298);
+            this.apiEndpointUrlTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.apiEndpointUrlTitleLabel.Name = "apiEndpointUrlTitleLabel";
-            this.apiEndpointUrlTitleLabel.Size = new System.Drawing.Size(116, 17);
+            this.apiEndpointUrlTitleLabel.Size = new System.Drawing.Size(153, 23);
             this.apiEndpointUrlTitleLabel.TabIndex = 12;
             this.apiEndpointUrlTitleLabel.Text = "Telemetry API URL:";
             // 
@@ -219,9 +254,10 @@
             // 
             this.statusTitleLabel.AutoSize = true;
             this.statusTitleLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusTitleLabel.Location = new System.Drawing.Point(92, 41);
+            this.statusTitleLabel.Location = new System.Drawing.Point(123, 50);
+            this.statusTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.statusTitleLabel.Name = "statusTitleLabel";
-            this.statusTitleLabel.Size = new System.Drawing.Size(46, 17);
+            this.statusTitleLabel.Size = new System.Drawing.Size(60, 23);
             this.statusTitleLabel.TabIndex = 11;
             this.statusTitleLabel.Text = "Status:";
             // 
@@ -240,12 +276,14 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.serverToolStripMenu,
             this.helpToolStripMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(552, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(736, 28);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -254,13 +292,13 @@
             this.serverToolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uninstallToolStripMenuItem});
             this.serverToolStripMenu.Name = "serverToolStripMenu";
-            this.serverToolStripMenu.Size = new System.Drawing.Size(51, 20);
+            this.serverToolStripMenu.Size = new System.Drawing.Size(62, 24);
             this.serverToolStripMenu.Text = "Server";
             // 
             // uninstallToolStripMenuItem
             // 
             this.uninstallToolStripMenuItem.Name = "uninstallToolStripMenuItem";
-            this.uninstallToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.uninstallToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.uninstallToolStripMenuItem.Text = "Uninstall";
             this.uninstallToolStripMenuItem.Click += new System.EventHandler(this.uninstallToolStripMenuItem_Click);
             // 
@@ -271,67 +309,48 @@
             this.donateToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenu.Name = "helpToolStripMenu";
-            this.helpToolStripMenu.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenu.Size = new System.Drawing.Size(53, 24);
             this.helpToolStripMenu.Text = "Help";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // donateToolStripMenuItem
             // 
             this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
-            this.donateToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.donateToolStripMenuItem.Text = "Donate";
             this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Visible = false;
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // commDropdown
-            // 
-            this.commDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.commDropdown.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.commDropdown.FormattingEnabled = true;
-            this.commDropdown.Location = new System.Drawing.Point(142, 126);
-            this.commDropdown.Name = "commDropdown";
-            this.commDropdown.Size = new System.Drawing.Size(369, 25);
-            this.commDropdown.TabIndex = 23;
-            this.commDropdown.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(55, 129);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 17);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "COMM Port:";
-            // 
             // commTimer
             // 
             this.commTimer.Enabled = true;
+            this.commTimer.Interval = 150;
             this.commTimer.Tick += new System.EventHandler(this.commTimer_Tick);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 322);
+            this.ClientSize = new System.Drawing.Size(736, 396);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
